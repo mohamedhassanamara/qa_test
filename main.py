@@ -3,6 +3,13 @@ from openai import OpenAI
 import database, models, schemas
 from sqlalchemy.orm import Session
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
 app = FastAPI()
 
 database.Base.metadata.create_all(bind=database.engine)
@@ -20,7 +27,7 @@ def summarize_text(text:str, db: Session = Depends(get_db)):
     model = "qanswer-llm"
     client = OpenAI(
         base_url="https://dev.qanswer.ai/llm",
-        api_key="tmp-IL$2nD9GzHfX-20250522",
+        api_key=openai_api_key,
     )
 
     response = client.chat.completions.create(
