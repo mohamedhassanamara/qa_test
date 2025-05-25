@@ -1,11 +1,12 @@
 # Test your FastAPI endpoints
 
-GET http://127.0.0.1:8000/
+# Test summarize endpoint with a sample string
+GET http://127.0.0.1:8000/Summarize/This%20is%20a%20sample%20text%20that%20should%20be%20summarized.
 Accept: application/json
-
 ###
 
-GET http://127.0.0.1:8000/hello/User
+# Test get_summaries endpoint
+GET http://127.0.0.1:8000/get_summaries
 Accept: application/json
 
 ###
